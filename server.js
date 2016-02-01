@@ -35,4 +35,4 @@ mongoose.connect(mongoUri);
 app.use('/server', require('./route/route_handler'));
 
 /* Starts server */
-app.listen(5000);
+app.listen(process.env.PORT || 5000);
