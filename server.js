@@ -22,8 +22,8 @@ var json = app.use(bodyParser.json());
 app.set('json spaces', 2);
 
 /* Connect to database */
-var mongodbURI = 'mongodb://davy1237:davy1237@ds055515.mongolab.com:55515/sample1237';
-mongoose.connect(mongodbURI);
+//var mongodbURI = 'mongodb://davy1237:davy1237@ds055515.mongolab.com:55515/sample1237';
+mongoose.connect(MONGOLAB_URI);
 
 /* Route Handling */
 app.use('/server', require('./route/route_handler'));
