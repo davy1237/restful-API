@@ -22,10 +22,13 @@ var json = app.use(bodyParser.json());
 app.set('json spaces', 2);
 
 /* Initialize database */
-mongoose.connect('mongodb://localhost/server');
+var mongodbURI = 'mongodb://heroku_r9r6przz:jpainoon2gdqreqcugivit87k1@ds049854.mongolab.com:49854/heroku_r9r6przz';
+mongoose.connect(mongodbURI);
 
 /* Route Handling */
 app.use('/server', require('./route/route_handler'));
 
+var port = Number(process.env.Port || 3000);
+
 /* Starts server */
-app.listen(3000);
+app.listen(port);
