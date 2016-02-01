@@ -23,6 +23,7 @@ app.set('json spaces', 2);
 
 /* Initialize database */
 var mongodbURI = 'mongodb://davy1237:davy1237@ds055515.mongolab.com:55515/sample1237';
+mongoose.connect(mongodbURI);
 
 /* Route Handling */
 app.use('/server', require('./route/route_handler'));
