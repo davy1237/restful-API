@@ -26,7 +26,7 @@ var mongoUri = process.env.MONGOLAB_URI ||
   process.env.MONGOHQ_URL ||
   'mongodb://localhost/server'; 
 var mongo = require('mongodb');
-var db = mongo.Db.connect(mongoUri, function (error, databaseConnection) {
+var db = mongoose.connect(mongoUri, function (error, databaseConnection) {
   db = databaseConnection;
 });
 /* Route Handling */
