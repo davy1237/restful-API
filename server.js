@@ -25,10 +25,7 @@ app.set('json spaces', 2);
 var mongoUri = process.env.MONGOLAB_URI ||
    process.env.MONGOHQ_URL ||
    'mongodb://localhost/server'; 
- //var db = mongoose.connect(mongoUri, function (error, databaseConnection) {
-//   db = databaseConnection;
-// });
-//var mongodbURI = 'mongodb://davy1237:davy1237@ds055515.mongolab.com:55515/sample1237';
+
 mongoose.connect(mongoUri);
 
 /* Route Handling */
