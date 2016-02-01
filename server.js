@@ -22,13 +22,16 @@ var json = app.use(bodyParser.json());
 app.set('json spaces', 2);
 
 /* Connect to database */
-var mongoUri = process.env.MONGOLAB_URI ||
-  process.env.MONGOHQ_URL ||
-  'mongodb://localhost/server'; 
-var mongo = require('mongodb');
-var db = mongoose.connect(mongoUri, function (error, databaseConnection) {
-  db = databaseConnection;
-});
+// var mongoUri = process.env.MONGOLAB_URI ||
+//   process.env.MONGOHQ_URL ||
+//   'mongodb://localhost/server'; 
+// var mongo = require('mongodb');
+// var db = mongoose.connect(mongoUri, function (error, databaseConnection) {
+//   db = databaseConnection;
+// });
+var mongodbURI = 'mongodb://davy1237:davy1237@ds055515.mongolab.com:55515/sample1237';
+mongoose.connect(mongodbURI);
+
 /* Route Handling */
 app.use('/server', require('./route/route_handler'));
 
