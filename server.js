@@ -10,8 +10,9 @@
 
 /* Dependencies */
 var express = require('express');
-var mongoose = require('mongoose');
+//var mongoose = require('mongoose');
 var bodyParser = require('body-parser');
+var objects = require('./route/route_handler.js');
 
 /* Using express*/
 var app = express();
@@ -21,15 +22,24 @@ var json = app.use(bodyParser.json());
 /* Sets up json format */
 app.set('json spaces', 2);
 
-/* Connect to database */
-var mongoUri = process.env.MONGOLAB_URI ||
-   process.env.MONGOHQ_URL ||
-   'mongodb://localhost/server'; 
+// /* Connect to database */
+// var mongoUri = process.env.MONGOLAB_URI ||
+//    process.env.MONGOHQ_URL ||
+//    'mongodb://localhost/server'; 
 
-mongoose.connect(mongoUri);
+// mongoose.connect(mongoUri);
+
+/* GET, PUT, POST, and DELETE implementations */
+
+
 
 /* Route Handling */
-app.use('/server', require('./route/route_handler'));
+app.get('/server', objects.getAll);
+app.get('/server/:id', objects.getById);
+app.post('/server', objects.post);
+app.put('/server:id', objects.put);
+app.delete('/server:id', objects.delete);
+
 
 /* Starts server */
-app.listen(process.env.PORT || 5000);
+app.listen(/*process.env.PORT ||*/ 5000);

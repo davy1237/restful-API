@@ -9,13 +9,13 @@
 
 /* Dependencies */
 var express = require('express');
-var rest = require('node-restful');
-var rest_mongoose = rest.mongoose;
-var Schema = rest_mongoose.Schema;
+var mongoose = require('mongoose');
+var Schema = mongoose.Schema;
 
 /* Creates object Schema to be dynamic */
-var objectSchema = new Schema({any: {}}, {strict: false});
-
+///////////////// turn off version key here /////////////
+var objectSchema = new Schema({any: {}}, {strict: false}, 
+                                         { versionKey: false });
 /* Returns */
-var object = rest.model('Object', objectSchema);
+var object = mongoose.model('Object', objectSchema);
 module.exports = object;
