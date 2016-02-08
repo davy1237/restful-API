@@ -67,7 +67,7 @@ exports.post = function(req, res) {
 		
 	if (err)
 		return next(err)
-	res.send(req.body);
+	res.send(results.ops);
 	})
 
 };
@@ -80,12 +80,13 @@ exports.put = function(req, res) {
     	return next(err);
     })
 
-	Collection.insert({'_id': ObjectId(id), body }, {}, function(err, result){
+	Collection.insert({'_id':new ObjectId(id), body }, {}, function(err, result){
     
     if (err) 
     	return next(err)
+
+    res.send(result.ops)
 	});
-    res.send(req.body)
     //res.send(req.id)
     //res.send(id)
 
