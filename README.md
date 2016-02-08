@@ -25,7 +25,7 @@ Schema.js: provides a schema for each object.
 ////////////////////////////////////////////
 
 The app can be run through this URL: 
-https://fierce-falls-11232.herokuapp.com/server/objects
+https://fierce-falls-11232.herokuapp.com/server
 
 ////////////////////////////////////////////
 //   		    Dependencies 		      //
