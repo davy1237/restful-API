@@ -13,7 +13,6 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
 /* Creates object Schema to be dynamic */
-///////////////// turn off version key here /////////////
 var objectSchema = new Schema({any: {}}, {strict: false}, 
                                          { versionKey: false });
 /* Returns */

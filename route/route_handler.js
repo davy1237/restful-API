@@ -15,17 +15,15 @@ var mongoskin = require('mongoskin');
 var ObjectId = mongo.ObjectId;
 var BSON = mongo.BSONPure;
 var app = express();
-//var router = express.Router();
 
 /* Connect to database */
 var mongoUri = process.env.MONGOLAB_URI ||
    process.env.MONGOHQ_URL || 
-   'mongodb://localhost/server'; 
-var db = mongoskin.db(mongoUri)
+   'mongodb://localhost/server';
 
 mongoose.connect(mongoUri);
 
-//db.open;
+var db = mongoskin.db(mongoUri)
 var Collection = db.collection('Objects')
 
 /* Defines an Object and its methods */
@@ -33,13 +31,7 @@ var object = require('../Object/Schema');
 
 exports.object = object;
 
-
-// app.param('Objects', function(req, res, next, Objects){
-//   req.collection = db.collection(Objects)
-//   return next()
-// })
-
-//works
+/* Get object by id */
 exports.getById = function(req, res) {
 	var id = req.params.id;
 	Collection.findOne({'_id':new ObjectId(id) }, function(err, result){
@@ -50,34 +42,34 @@ exports.getById = function(req, res) {
   })
 };
 
-//works
+/* Get all objects */
 exports.getAll = function(req, res) {
 	Collection.find().toArray(function(err, results){
 	
 	if (err) 
 		return next(err)
-    res.send(results);
+    res.send(results)
 	})
 };
 
-//works
+/* Post Object */
 exports.post = function(req, res) {
 	var body = req.body
 	Collection.insert({body}, {}, function(err, results) {
 		
 	if (err)
 		return next(err)
-	res.send(results.ops);
+	res.send(results.ops)
 	})
 
 };
-
+/* Update Object */
 exports.put = function(req, res) {
 	var id = req.params.id;
 	var body = req.body;
 	Collection.remove({'_id':new ObjectId(id) }, function(err, result){
     if (err) 
-    	return next(err);
+    	return next(err)
     })
 
 	Collection.insert({'_id':new ObjectId(id), body }, {}, function(err, result){
@@ -86,27 +78,16 @@ exports.put = function(req, res) {
     	return next(err)
 
     res.send(result.ops)
-	});
-    //res.send(req.id)
-    //res.send(id)
-
+	})
 };
 
-//works
+/* Remove Object */
 exports.delete = function(req, res) {
-	var id = req.params.id;
-    console.log('Deleting Objects: ' + id);
+	var id = req.params.id
+    console.log('Deleting Objects: ' + id)
     Collection.remove({'_id':new ObjectId(id) }, function(err, result){
     if (err) 
-    	return next(err);
+    	return next(err)
     })
-    res.send();
-}
-
-
-// 	var id = req.params.id;
-//     console.log('Deleting object: ' + id);
-// 	Collection.remove({'_id':new BSON.ObjectID(id)});
-// };
-
-//db.close;
+    res.send()
+};

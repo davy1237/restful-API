@@ -22,14 +22,6 @@ var json = app.use(bodyParser.json());
 /* Sets up json format */
 app.set('json spaces', 2);
 
-// /* Connect to database */
-// var mongoUri = process.env.MONGOLAB_URI ||
-//    process.env.MONGOHQ_URL ||
-//    'mongodb://localhost/server'; 
-
-// mongoose.connect(mongoUri);
-
-
 /* Route Handling */
 app.get('/server', objects.getAll);
 app.get('/server/:id', objects.getById);
