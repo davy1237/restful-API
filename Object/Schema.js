@@ -17,5 +17,5 @@ var Schema = mongoose.Schema;
 var objectSchema = new Schema({any: {}}, {strict: false}, 
                                          { versionKey: false });
 /* Returns */
-var object = mongoose.model('Object', objectSchema);
+var object = mongoose.model('Objects', objectSchema);
 module.exports = object;

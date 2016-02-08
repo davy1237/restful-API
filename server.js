@@ -10,7 +10,7 @@
 
 /* Dependencies */
 var express = require('express');
-//var mongoose = require('mongoose');
+var mongoskin = require('mongoskin');
 var bodyParser = require('body-parser');
 var objects = require('./route/route_handler.js');
 
@@ -29,17 +29,14 @@ app.set('json spaces', 2);
 
 // mongoose.connect(mongoUri);
 
-/* GET, PUT, POST, and DELETE implementations */
-
-
 
 /* Route Handling */
 app.get('/server', objects.getAll);
 app.get('/server/:id', objects.getById);
 app.post('/server', objects.post);
-app.put('/server:id', objects.put);
-app.delete('/server:id', objects.delete);
+app.put('/server/:id', objects.put);
+app.delete('/server/:id', objects.delete);
 
 
 /* Starts server */
-app.listen(/*process.env.PORT ||*/ 5000);
+app.listen(process.env.PORT || 5000);
